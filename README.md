@@ -2,7 +2,7 @@
 
 
 
-Pirmajā progresa ziņojumā (30.11.23) jābūt: 
+Pirmajā Pirmajā progresa ziņojumā (30.11.23) jābūt: 
 
 
  -  tēma (nosaukums, grupas biedru saraksts, apraksts 2-3 teikumi).
