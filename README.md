@@ -13,7 +13,7 @@ Pirmajā Pirmajā progresa ziņojumā (30.11.23) jābūt:
 Starptautiskās kosmosa stacijas reāllaika orbītas attēlojumu. Papildus API izmantošanai, 
 pielietojot dažādus matemātiskos rīkus, formulas, utt., ir plānots simulēt Kosmosa stacijas orbītas 
 trajektoriju apkārt zemeslodei, kura ik reizi, kad iegūti jauni dati no izvēlētās datubāzes, 
-koriģētu šo trajektoriju, aprēķinātu to no jauna.
+koriģētu šo trajektoriju, aprēķinātu to no jauna (tādā gadījumā, ja nespējam atrast datubāzi, kas gana ātri dod jaunas stacijas pozīcijas vērtības).
 
 **Grupas biedru saraksts:** Jānis Stendzenieks, Gustavs Bremmers.
 
