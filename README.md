@@ -19,6 +19,8 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna.
 
 **Darba plāns decembrim:**
 
-`1. - 9.` => Atrast starptautiskās kosmosa stacijas koordinātu (deklināciju un azimutu vai kādu citu koordinātu sistēmu) datubāzi, vietu, no kurienes ievākt live pozīciju stacijai.
-`10. - 16.` =>  
-`17. - 22.` =>   
+`1. - 9. => Atrast starptautiskās kosmosa stacijas koordinātu (deklināciju un azimutu vai kādu citu koordinātu sistēmu) datubāzi, vietu, no kurienes ievākt live pozīciju stacijai. Apskatīties, no kurienes citas prgrammas ņem datus (piemēram Stellarium). Pameklēt piemērus API sistēmām un kā visu pareizi apstrādāt. `
+
+`10. - 16. =>  Vajadzētu būt atrastai vietai, no kuras ņemam pozīcijas datus. Sākt pamazām rakstīt pamata kodu, kas spēj nolasīt un apstrādāt iegūtos datus. `
+
+`17. - 22. => Turpināt darbu pie programmas rakstīšanas. Ja sanaķ, varam sākt domāt par to, kā pārveidosim iegūtos datus vizuālā trajektorijā utt. `
