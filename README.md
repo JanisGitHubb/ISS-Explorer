@@ -3,8 +3,8 @@
 
 Pirmajā Pirmajā progresa ziņojumā (30.11.23) jābūt: 
  -  Tēma (nosaukums, grupas biedru saraksts, apraksts 2-3 teikumi).
- -  Repozitorijs
- -  Darba plāns decembrim
+ -  Repozitorijs.
+ -  Darba plāns decembrim.
 
 
 **Tēma:** Starptautiskās kosmosa stacijas reāllaika orbītas simulēšana.
