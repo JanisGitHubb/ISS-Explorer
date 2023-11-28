@@ -19,6 +19,6 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna.
 
 **Darba plāns decembrim:**
 
-`1. - 9.` => Atrast starptautiskās kosmosa stacijas koordinātu (deklināciju un azimutu vai kādu citu koordinātu sistēmu) datubāzi, vietu, no kurienes ievākt live pozīciju stacijai. 
+`1. - 9.` => Atrast starptautiskās kosmosa stacijas koordinātu (deklināciju un azimutu vai kādu citu koordinātu sistēmu) datubāzi, vietu, no kurienes ievākt live pozīciju stacijai.
 `10. - 16.` =>  
 `17. - 22.` =>   
