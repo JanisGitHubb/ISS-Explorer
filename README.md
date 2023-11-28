@@ -19,6 +19,6 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna.
 
 **Darba plāns decembrim:**
 
-`1. - 9.` => 
+`1. - 9.` =>  
 `10. - 16.` => 
 `17. - 22.` => 
