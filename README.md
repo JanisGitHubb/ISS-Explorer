@@ -21,6 +21,6 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna.
 
 `1. - 9. => Atrast starptautiskās kosmosa stacijas koordinātu (deklināciju un azimutu vai kādu citu koordinātu sistēmu) datubāzi, vietu, no kurienes ievākt live pozīciju stacijai. Apskatīties, no kurienes citas prgrammas ņem datus (piemēram Stellarium). Pameklēt piemērus API sistēmām un kā visu pareizi apstrādāt. `
 
-`10. - 16. =>  Vajadzētu būt atrastai vietai, no kuras ņemam pozīcijas datus. Sākt pamazām rakstīt pamata kodu, kas spēj nolasīt un apstrādāt iegūtos datus. `
+`10. - 16. =>  Vajadzētu būt atrastai vietai, no kuras ņemam pozīcijas datus. Sameklēt piemērus un resursus kā izveidot labu zemeslodes un kosmosa stacijas trajektorijas simulāciju un vispārīgu UI. `
 
-`17. - 22. => Turpināt darbu pie programmas rakstīšanas. Ja sanaķ, varam sākt domāt par to, kā pārveidosim iegūtos datus vizuālā trajektorijā utt. `
+`17. - 22. => Sākt darbu pie UI koda rakstīšanas. Ja sanāk laika, varam sākt domāt par to, kā apstrādāt visus API datus.`
