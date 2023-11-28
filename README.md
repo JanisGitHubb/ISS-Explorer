@@ -17,6 +17,6 @@ Grupas biedru saraksts: Jānis Stendzenieks, Gustavs Bremmers.
 
 Darba plāns decembrim:
 
-1 - 9 => Atrast 
-10 - 16 => 
-17 - 22 => 
+1) - 9 => Atrast 
+1) 10 - 16 => 
+1) 17 - 22 => 
