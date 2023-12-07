@@ -27,4 +27,4 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna (tādā gadījumā, ja ne
 
 Uzdevumu nr.: 
  - World map(1)
- - Mājaslapa + UI (2)
+ - Mājaslapa + UI (2) 
