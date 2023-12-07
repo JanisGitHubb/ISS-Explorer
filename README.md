@@ -24,3 +24,7 @@ koriģētu šo trajektoriju, aprēķinātu to no jauna (tādā gadījumā, ja ne
 `10. - 16. =>  Vajadzētu būt atrastai vietai, no kuras ņemam pozīcijas datus. Sameklēt piemērus un resursus kā izveidot labu zemeslodes un kosmosa stacijas trajektorijas simulāciju un vispārīgu UI, ja iespējams, sākt jau rakstīt pamata kodu zemes simulācijai. `
 
 `17. - 22. => Sākt darbu pie UI koda rakstīšanas. Ja sanāk laika, varam sākt domāt par to, kā apstrādāt API datus.`
+
+Uzdevumu nr.: 
+ - World map(1)
+ - Mājaslapa + UI (2)
