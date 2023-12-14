@@ -1,7 +1,9 @@
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
-import vertexShader from '/shaders/vertex.glsl'
+import vertexShader from './shaders/vertex.glsl'
+import fragmentShader from './shaders/fragment.glsl'
 
 console.log(vertexShader)
+console.log(fragmentShader)
 
 const scene = new THREE.Scene();
 
@@ -21,11 +23,12 @@ renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
 //create a sphere
+//kaut kas neiet ar shaders..
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(5, 50, 50), 
   new THREE.ShaderMaterial({
-    //vertexShader: vertexShader,
-    // fragmentShader:
+    vertexShader,
+    fragmentShader
   }))
 
 scene.add(sphere)
