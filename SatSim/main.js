@@ -24,11 +24,19 @@ document.body.appendChild(renderer.domElement)
 
 //create a sphere
 //kaut kas neiet ar shaders..
+// const sphere = new THREE.Mesh(
+//   new THREE.SphereGeometry(5, 50, 50), 
+//   new THREE.ShaderMaterial({
+//     //vertexShader,
+//     fragmentShader
+//   }))
+
+
+//tikai karte wrapped 
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(5, 50, 50), 
-  new THREE.ShaderMaterial({
-    vertexShader,
-    fragmentShader
+  new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("earthuvmap.jpg")
   }))
 
 scene.add(sphere)
