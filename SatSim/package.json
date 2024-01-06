@@ -14,6 +14,7 @@
     "vite-plugin-string": "^1.2.2"
   },
   "dependencies": {
-    "glsl": "^0.0.1"
+    "glsl": "^0.0.1",
+    "three-globe": "^2.30.0"
   }
 }
