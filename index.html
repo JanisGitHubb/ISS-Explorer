@@ -38,5 +38,23 @@
             </div>
         </div>
     </div>
+    <script>
+
+        let left = document.querySelector('.left');
+        let content = document.querySelector('.content');
+        let protos = document.querySelectorAll('.proto');
+
+        left.addEventListener('mousemove', (event)=>{
+            let move = (event.clientx * 0.05) + 4;
+            let move2 = (event.clientx*0.003);
+
+            content.style.transform = `translateX(-${move2}%)`;
+
+            protos.forEach((protos)=> {
+                proto.style.transform = `translateX(${move}%)`;
+            })
+        })
+
+    </script>
 </body>
 </html>
