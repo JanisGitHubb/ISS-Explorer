@@ -1,6 +1,7 @@
 import requests
 import time
 import csv
+import json
 
 # with open('data.csv', mode='w') as csvfile:
 #         fieldnames = ['number', 'timestamp', 'longitude', 'latitude']
@@ -15,6 +16,7 @@ datawriter = csv.writer(file)
 n = 1
 for i in range(5):
     response = requests.get('http://api.open-notify.org/iss-now.json')
+    jsondata = response.json()
 
     status = response.status_code
     message = response.json()['message']
@@ -32,6 +34,8 @@ for i in range(5):
 
     datawriter.writerow([n, timestamp, longitude, latitude])
 
+    with open("data.json", "w") as jsonfile:
+        json.dump(jsondata, jsonfile)
 
     time.sleep(2)
     n = n+1
