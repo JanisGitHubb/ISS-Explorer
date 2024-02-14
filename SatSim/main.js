@@ -23,6 +23,34 @@ initGlobe();
 onWindowResize();
 animate();
 
+
+
+function fetchData() {
+  fetch('http://api.open-notify.org/iss-now.json')
+    .then(response => response.json())
+    .then(data => {
+      // Process the API response data as needed
+      console.log('API Response:', data);
+      if (data.message === 'success' && data.iss_position) {
+        const latitude = parseFloat(data.iss_position.latitude);
+        const longitude = parseFloat(data.iss_position.longitude);
+        console.log('Latitude:', latitude);
+        console.log('Longitude:', longitude);
+        initGlobe(latitude, longitude);
+      } else {
+        console.error('Invalid API response:', data);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }
+
+// Call fetchData every second
+//setInterval(fetchData, 1000);
+
+
+
 function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -77,7 +105,7 @@ function init(){
 
 }
 
-function initGlobe() {
+function initGlobe(latitude, longitude) {
 
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -88,13 +116,15 @@ function initGlobe() {
   .hexPolygonResolution(3)
   .hexPolygonMargin(0.3)
   
-  
-  
-  .pointsData(dots.Dots)
-  .pointAltitude(0.1)
-  .pointRadius(0.3)
-  
-  
+  //Globe.addPoint(latitude, longitude);
+
+ // .pointsData(dots.Dots)
+  // .pointAltitude(0.1)
+  // .pointRadius(0.3)
+
+  // .pointLat(5.5235)
+  // .pointLng(-94.8093)
+
 
   Globe.rotateY(-Math.PI*(5/9));
   Globe.rotateZ(-Math.PI/6);
