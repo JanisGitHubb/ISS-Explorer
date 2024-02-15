@@ -29,14 +29,18 @@ function fetchData() {
   fetch('http://api.open-notify.org/iss-now.json')
     .then(response => response.json())
     .then(data => {
-      // Process the API response data as needed
+      // Process the API response data
       console.log('API Response:', data);
       if (data.message === 'success' && data.iss_position) {
         const latitude = parseFloat(data.iss_position.latitude);
         const longitude = parseFloat(data.iss_position.longitude);
         console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
-        initGlobe(latitude, longitude);
+        // let object = {
+        //   "lat": latitude,
+        //   "lng": longitude
+        // }
+        //initGlobe(object);
       } else {
         console.error('Invalid API response:', data);
       }
@@ -47,7 +51,7 @@ function fetchData() {
   }
 
 // Call fetchData every second
-//setInterval(fetchData, 1000);
+setInterval(fetchData, 1000);
 
 
 
@@ -105,7 +109,7 @@ function init(){
 
 }
 
-function initGlobe(latitude, longitude) {
+function initGlobe(object) {
 
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -117,20 +121,22 @@ function initGlobe(latitude, longitude) {
   .hexPolygonMargin(0.3)
   
   //Globe.addPoint(latitude, longitude);
+// 
+  // .pointLat('5.5235')
+  // .pointLng('-94.8093')
+  .pointsData(dots.Dots)
+  //.pointsData(object)
+  .pointAltitude(0.005)
+  .pointRadius(0.6)
+  .pointColor(0xc94444)
 
- // .pointsData(dots.Dots)
-  // .pointAltitude(0.1)
-  // .pointRadius(0.3)
 
-  // .pointLat(5.5235)
-  // .pointLng(-94.8093)
-
-
+//0x3a228a 0x220038
   Globe.rotateY(-Math.PI*(5/9));
   Globe.rotateZ(-Math.PI/6);
   const globeMaterial = Globe.globeMaterial();
-  globeMaterial.color = new THREE.Color(0x3a228a);
-  globeMaterial.emissive = new THREE.Color(0x220038);
+  globeMaterial.color = new THREE.Color(0x0b1e6e);
+  globeMaterial.emissive = new THREE.Color(0x07144a);
   globeMaterial.shininess = 0.7;
 
   scene.add(Globe);
