@@ -36,11 +36,7 @@ function fetchData() {
         const longitude = parseFloat(data.iss_position.longitude);
         console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
-        // let object = {
-        //   "lat": latitude,
-        //   "lng": longitude
-        // }
-        //initGlobe(object);
+        //writeJSON(latitude, longitude);
       } else {
         console.error('Invalid API response:', data);
       }
@@ -51,9 +47,56 @@ function fetchData() {
   }
 
 // Call fetchData every second
-setInterval(fetchData, 1000);
+setInterval(fetchData, 100000);
 
+// nestrādā
+function writeJSON(latitude, longitude){
+  // fetch('dot.json')
+  // .then(response => response.json())
+  // .then(data => {
+  //     // Update latitude and longitude
+  //     data.Dots.forEach(item => {
+  //         if ('lat' in item && 'lng' in item) {
+  //             item.lat = latitude;
+  //             item.lng = longitude;
+  //         } else {
+  //             console.log("neiet večuk");
+  //         }
+  //     });
 
+  //     // Convert JSON object to string
+  //     const jsonString = JSON.stringify(data, null, 4);
+
+  //     // Create a Blob from the string
+  //     const blob = new Blob([jsonString], { type: 'application/json' });
+
+  //     // Create a download link and trigger the download
+  //     const a = document.createElement('a');
+  //     a.href = URL.createObjectURL(blob);
+  //     a.download = 'dot.json';
+  //     a.click();
+  //     readJSON();
+  // })
+  // .catch(error => {
+  //     console.log('Error fetching or parsing data:', error);
+  // });
+}
+//strādā
+function readJSON(){
+  fetch('./dot.json')
+    .then(response => response.json())
+    .then(data => {
+        // Log latitude and longitude
+        data.Dots.forEach(item => {
+            if ('lat' in item && 'lng' in item) {
+                console.log(`Latitude: ${item.lat}, Longitude: ${item.lng}`);
+            }
+        });
+    })
+    .catch(error => {
+        console.log('Error fetching data:', error);
+    });
+}
 
 function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
@@ -109,7 +152,7 @@ function init(){
 
 }
 
-function initGlobe(object) {
+function initGlobe() {
 
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -120,15 +163,12 @@ function initGlobe(object) {
   .hexPolygonResolution(3)
   .hexPolygonMargin(0.3)
   
-  //Globe.addPoint(latitude, longitude);
-// 
-  // .pointLat('5.5235')
-  // .pointLng('-94.8093')
-  .pointsData(dots.Dots)
-  //.pointsData(object)
-  .pointAltitude(0.005)
-  .pointRadius(0.6)
-  .pointColor(0xc94444)
+
+  // .pointsData(dots.Dots)
+  // .pointAltitude(0.005)
+  // .pointRadius(0.6)
+  // .pointColor(0xc94444)
+
 
 
 //0x3a228a 0x220038
