@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 import countries from './custom.geo.json'
 
-import dots from './dot.json'
+//import dots from './dot.json'
 
 
 
@@ -19,12 +19,28 @@ let windowHalfY = window.innerHeight/2;
 var Globe;
 
 init();
-initGlobe();
 onWindowResize();
 animate();
 
 
+let dots = {
+  "Dots": []
+};
 
+// Function to update jsonData with new coordinates
+function updateJsonData(newLatitude, newLongitude) {
+  // Clear existing Dots array
+  dots.Dots = [];
+
+  // Add new dot with updated coordinates
+  dots.Dots.push({ "lat": newLatitude, "lng": newLongitude });
+
+  initGlobe(dots);
+}
+
+
+
+//fetch data function
 function fetchData() {
   fetch('http://api.open-notify.org/iss-now.json')
     .then(response => response.json())
@@ -32,11 +48,13 @@ function fetchData() {
       // Process the API response data
       console.log('API Response:', data);
       if (data.message === 'success' && data.iss_position) {
-        const latitude = parseFloat(data.iss_position.latitude);
-        const longitude = parseFloat(data.iss_position.longitude);
+        let latitude = parseFloat(data.iss_position.latitude);
+        let longitude = parseFloat(data.iss_position.longitude);
         console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
-        //writeJSON(latitude, longitude);
+        // Example usage:
+        // Update jsonData with initial coordinates
+        updateJsonData(latitude, longitude);
       } else {
         console.error('Invalid API response:', data);
       }
@@ -46,57 +64,10 @@ function fetchData() {
     });
   }
 
-// Call fetchData every second
-setInterval(fetchData, 100000);
+// Call fetchData every tenth of a second
+setInterval(fetchData, 100);
 
-// nestrādā
-function writeJSON(latitude, longitude){
-  // fetch('dot.json')
-  // .then(response => response.json())
-  // .then(data => {
-  //     // Update latitude and longitude
-  //     data.Dots.forEach(item => {
-  //         if ('lat' in item && 'lng' in item) {
-  //             item.lat = latitude;
-  //             item.lng = longitude;
-  //         } else {
-  //             console.log("neiet večuk");
-  //         }
-  //     });
 
-  //     // Convert JSON object to string
-  //     const jsonString = JSON.stringify(data, null, 4);
-
-  //     // Create a Blob from the string
-  //     const blob = new Blob([jsonString], { type: 'application/json' });
-
-  //     // Create a download link and trigger the download
-  //     const a = document.createElement('a');
-  //     a.href = URL.createObjectURL(blob);
-  //     a.download = 'dot.json';
-  //     a.click();
-  //     readJSON();
-  // })
-  // .catch(error => {
-  //     console.log('Error fetching or parsing data:', error);
-  // });
-}
-//strādā
-function readJSON(){
-  fetch('./dot.json')
-    .then(response => response.json())
-    .then(data => {
-        // Log latitude and longitude
-        data.Dots.forEach(item => {
-            if ('lat' in item && 'lng' in item) {
-                console.log(`Latitude: ${item.lat}, Longitude: ${item.lng}`);
-            }
-        });
-    })
-    .catch(error => {
-        console.log('Error fetching data:', error);
-    });
-}
 
 function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
@@ -141,7 +112,7 @@ function init(){
   controls.minDistance = 200;
   controls.maxDistance = 500;
   controls.rotateSpeed = 0,8;
-  controls.zoomSpeed = 1;
+  controls.zoomSpeed = 0;
   controls.autoRotate = true;
 
   controls.minPolarAngle = Math.PI/3.5;
@@ -152,7 +123,7 @@ function init(){
 
 }
 
-function initGlobe() {
+function initGlobe(dots) {
 
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -164,12 +135,12 @@ function initGlobe() {
   .hexPolygonMargin(0.3)
   
 
-  // .pointsData(dots.Dots)
-  // .pointAltitude(0.005)
-  // .pointRadius(0.6)
-  // .pointColor(0xc94444)
+  .pointsData(dots.Dots)
+  .pointAltitude(0.005)
+  .pointRadius(0.6)
+  .pointColor(0xffffff)
 
-
+//orģinālie dati
 
 //0x3a228a 0x220038
   Globe.rotateY(-Math.PI*(5/9));
