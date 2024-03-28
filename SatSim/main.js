@@ -103,7 +103,7 @@ function init(){
 
   scene.add(camera);
 
-  scene.fog =new THREE.Fog(0x535ef3, 400, 2000);
+  //scene.fog =new THREE.Fog(0x535ef3, 400, 2000);
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -113,7 +113,7 @@ function init(){
   controls.maxDistance = 500;
   controls.rotateSpeed = 0,8;
   controls.zoomSpeed = 0;
-  controls.autoRotate = true;
+  controls.autoRotate = false;
 
   controls.minPolarAngle = Math.PI/3.5;
   controls.maxPolarAngle = Math.PI - Math.PI/3;
