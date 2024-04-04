@@ -64,8 +64,8 @@ function fetchData() {
     });
   }
 
-// Call fetchData every tenth of a second
-setInterval(fetchData, 100);
+// Call fetchData every second
+setInterval(fetchData, 1000);
 
 
 
@@ -134,12 +134,12 @@ function initGlobe(dots) {
   .hexPolygonResolution(3)
   .hexPolygonMargin(0.3)
   
-
+  //.pointOfView({"lat": "56.95377", "lng": "24.099788","altitude": 2.5}, 1)
   .pointsData(dots.Dots)
   .pointAltitude(0.005)
   .pointRadius(0.6)
   .pointColor(0xffffff)
-
+  console.log(Globe.getCoords(56.95377, 24.09979))
 //orģinālie dati
 
 //0x3a228a 0x220038
