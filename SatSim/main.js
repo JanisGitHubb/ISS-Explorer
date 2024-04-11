@@ -20,7 +20,7 @@ var Globe;
 
 init();
 onWindowResize();
-animate();
+//animate();
 
 
 let dots = {
@@ -139,12 +139,18 @@ function initGlobe(dots) {
   .pointAltitude(0.005)
   .pointRadius(0.6)
   .pointColor(0xffffff)
-  console.log(Globe.getCoords(56.95377, 24.09979))
+  console.log(Globe.getCoords(56.95377, 24.09979).x)
+  console.log(Globe.getCoords(56.95377, 24.09979).y)
+  console.log(Globe.getCoords(56.95377, 24.09979).z)
+  //camera.position.z = 400;
+  let x = Globe.getCoords(56.95377, 24.09979).x
+  let y = Globe.getCoords(56.95377, 24.09979).y;
 //orģinālie dati
+  animate(x, y);
 
 //0x3a228a 0x220038
-  Globe.rotateY(-Math.PI*(5/9));
-  Globe.rotateZ(-Math.PI/6);
+  //Globe.rotateY(-Math.PI*(5/9));
+  //Globe.rotateZ(-Math.PI/6);
   const globeMaterial = Globe.globeMaterial();
   globeMaterial.color = new THREE.Color(0x0b1e6e);
   globeMaterial.emissive = new THREE.Color(0x07144a);
@@ -167,12 +173,14 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate() {
-  camera.position.x +=
-    Math.abs(mouseX) <= windowHalfX/2
-      ?(mouseX/2 - camera.position.x)*0.005
-      :0;
-  camera.position.y += (-mouseY/2 - camera.position.y)* 0.005
+function animate(x, y) {
+  camera.position.x = x;
+  camera.position.y = y;
+  //camera.position.x +=
+    //Math.abs(mouseX) <= windowHalfX/2
+      //?(mouseX/2 - camera.position.x)*0.05
+      //:0;
+  //camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
