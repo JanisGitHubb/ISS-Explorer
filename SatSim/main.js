@@ -20,40 +20,36 @@ var Globe;
 
 init();
 onWindowResize();
-//animate();
+animate();
+
 
 
 let dots = {
   "Dots": []
 };
 
-// Function to update jsonData with new coordinates
+
 function updateJsonData(newLatitude, newLongitude) {
-  // Clear existing Dots array
   dots.Dots = [];
 
-  // Add new dot with updated coordinates
+  
   dots.Dots.push({ "lat": newLatitude, "lng": newLongitude });
 
   initGlobe(dots);
+  
 }
 
 
-
-//fetch data function
 function fetchData() {
   fetch('http://api.open-notify.org/iss-now.json')
     .then(response => response.json())
     .then(data => {
-      // Process the API response data
       console.log('API Response:', data);
       if (data.message === 'success' && data.iss_position) {
         let latitude = parseFloat(data.iss_position.latitude);
         let longitude = parseFloat(data.iss_position.longitude);
         console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
-        // Example usage:
-        // Update jsonData with initial coordinates
         updateJsonData(latitude, longitude);
       } else {
         console.error('Invalid API response:', data);
@@ -64,8 +60,8 @@ function fetchData() {
     });
   }
 
-// Call fetchData every second
-setInterval(fetchData, 1000);
+
+setInterval(fetchData, 5000);
 
 
 
@@ -97,9 +93,9 @@ function init(){
   dLight2.position.set(-200, 500, 200);
   camera.add(dLight2);
 
-  camera.position.z = 400;
-  camera.position.x = 0;
-  camera.position.y = 0;
+  camera.position.z = 800;
+  camera.position.x = 150;
+  camera.position.y = 100;
 
   scene.add(camera);
 
@@ -109,10 +105,10 @@ function init(){
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 200;
+  controls.minDistance = 300;
   controls.maxDistance = 500;
-  controls.rotateSpeed = 0,8;
-  controls.zoomSpeed = 0;
+  controls.rotateSpeed = 0.8;
+  controls.zoomSpeed = 0.1;
   controls.autoRotate = false;
 
   controls.minPolarAngle = Math.PI/3.5;
@@ -122,7 +118,8 @@ function init(){
   document.addEventListener("mousemove", onMouseMove);
 
 }
-
+//TO DO: starting location should be the current ISS position
+//Need some function to clear the array
 function initGlobe(dots) {
 
   Globe = new ThreeGlobe({
@@ -136,19 +133,14 @@ function initGlobe(dots) {
   
   //.pointOfView({"lat": "56.95377", "lng": "24.099788","altitude": 2.5}, 1)
   .pointsData(dots.Dots)
-  .pointAltitude(0.005)
+  .pointAltitude(0.05)
   .pointRadius(0.6)
-  .pointColor(0xffffff)
+  .pointColor(0xff0000)
   console.log(Globe.getCoords(56.95377, 24.09979).x)
   console.log(Globe.getCoords(56.95377, 24.09979).y)
   console.log(Globe.getCoords(56.95377, 24.09979).z)
-  //camera.position.z = 400;
-  let x = Globe.getCoords(56.95377, 24.09979).x
-  let y = Globe.getCoords(56.95377, 24.09979).y;
-//orģinālie dati
-  animate(x, y);
 
-//0x3a228a 0x220038
+
   //Globe.rotateY(-Math.PI*(5/9));
   //Globe.rotateZ(-Math.PI/6);
   const globeMaterial = Globe.globeMaterial();
@@ -173,14 +165,12 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate(x, y) {
-  camera.position.x = x;
-  camera.position.y = y;
-  //camera.position.x +=
-    //Math.abs(mouseX) <= windowHalfX/2
-      //?(mouseX/2 - camera.position.x)*0.05
-      //:0;
-  //camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
+function animate() {
+  camera.position.x +=
+    Math.abs(mouseX) <= windowHalfX/2
+      ?(mouseX/2 - camera.position.x)*0.05
+      :0;
+  camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
