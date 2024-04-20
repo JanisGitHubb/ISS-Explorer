@@ -30,12 +30,12 @@ let dots = {
 
 
 function updateJsonData(newLatitude, newLongitude) {
-  dots.Dots = [];
+  dots.Dots.length = 0;
 
   
   dots.Dots.push({ "lat": newLatitude, "lng": newLongitude });
 
-  initGlobe(dots);
+  initGlobe(dots, newLatitude, newLongitude);
   
 }
 
@@ -109,7 +109,7 @@ function init(){
   controls.maxDistance = 500;
   controls.rotateSpeed = 0.8;
   controls.zoomSpeed = 0.1;
-  controls.autoRotate = false;
+  controls.autoRotate = true;
 
   controls.minPolarAngle = Math.PI/3.5;
   controls.maxPolarAngle = Math.PI - Math.PI/3;
@@ -120,7 +120,7 @@ function init(){
 }
 //TO DO: starting location should be the current ISS position
 //Need some function to clear the array
-function initGlobe(dots) {
+function initGlobe(dots, lat, lng) {
 
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -133,15 +133,22 @@ function initGlobe(dots) {
   
   //.pointOfView({"lat": "56.95377", "lng": "24.099788","altitude": 2.5}, 1)
   .pointsData(dots.Dots)
-  .pointAltitude(0.05)
+  .pointAltitude(0.01)
   .pointRadius(0.6)
   .pointColor(0xff0000)
-  console.log(Globe.getCoords(56.95377, 24.09979).x)
-  console.log(Globe.getCoords(56.95377, 24.09979).y)
-  console.log(Globe.getCoords(56.95377, 24.09979).z)
+  //console.log(Globe.getCoords(56.95377, 24.09979).x)
+ // console.log(Globe.getCoords(56.95377, 24.09979).y)
+  //console.log(Globe.getCoords(56.95377, 24.09979).z)
+
+  //vajag jaunu veidu
+  const phi = (lat + 180) * Math.PI / 180; // Longitude (phi) corresponds to rotation around the y-axis
+  const theta = (lng - 90) * Math.PI / 180; // Latitude (theta) corresponds to rotation around the x-axis
+
+  Globe.rotateY(phi);
+  Globe.rotateZ(theta);
 
 
-  //Globe.rotateY(-Math.PI*(5/9));
+  //Globe.rotateY(-Math.PI*(2/9));
   //Globe.rotateZ(-Math.PI/6);
   const globeMaterial = Globe.globeMaterial();
   globeMaterial.color = new THREE.Color(0x0b1e6e);
