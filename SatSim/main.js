@@ -86,7 +86,6 @@ function init(){
 
   scene.add(camera);
 
-
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
@@ -128,8 +127,7 @@ function initGlobe(dots, lat, lng) {
   Globe.pointAltitude(0.01)
   Globe.pointRadius(0.6)
   Globe.pointColor(0xff0000)
-
-
+  
   //vajag jaunu veidu
   //const phi = (lat + 180) * Math.PI / 180; // Longitude (phi) corresponds to rotation around the y-axis
   //const theta = (lng - 90) * Math.PI / 180; // Latitude (theta) corresponds to rotation around the x-axis
@@ -137,13 +135,9 @@ function initGlobe(dots, lat, lng) {
   //Globe.rotateY(phi);
   //Globe.rotateZ(theta);
 
-
   //Globe.rotateY(-Math.PI*(2/9));
   //Globe.rotateZ(-Math.PI/6);
   
-
-  
-
 }
 
 function onMouseMove(event) {
