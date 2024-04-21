@@ -1,14 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
-
 import ThreeGlobe from 'three-globe';
-
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
 import countries from './custom.geo.json'
-
-//import dots from './dot.json'
-
-
 
 var renderer, camera, scene, controls;
 
@@ -21,24 +14,18 @@ var Globe;
 init();
 onWindowResize();
 animate();
-
+globe();
 
 
 let dots = {
   "Dots": []
 };
 
-
 function updateJsonData(newLatitude, newLongitude) {
   dots.Dots.length = 0;
-
-  
   dots.Dots.push({ "lat": newLatitude, "lng": newLongitude });
-
   initGlobe(dots, newLatitude, newLongitude);
-  
 }
-
 
 function fetchData() {
   fetch('http://api.open-notify.org/iss-now.json')
@@ -61,7 +48,7 @@ function fetchData() {
   }
 
 
-setInterval(fetchData, 5000);
+setInterval(fetchData, 1000);
 
 
 
@@ -99,17 +86,16 @@ function init(){
 
   scene.add(camera);
 
-  //scene.fog =new THREE.Fog(0x535ef3, 400, 2000);
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 300;
-  controls.maxDistance = 500;
+  controls.minDistance = 200;
+  controls.maxDistance = 600;
   controls.rotateSpeed = 0.8;
-  controls.zoomSpeed = 0.1;
-  controls.autoRotate = true;
+  controls.zoomSpeed = 0.2;
+  controls.autoRotate = false;
 
   controls.minPolarAngle = Math.PI/3.5;
   controls.maxPolarAngle = Math.PI - Math.PI/3;
@@ -118,10 +104,7 @@ function init(){
   document.addEventListener("mousemove", onMouseMove);
 
 }
-//TO DO: starting location should be the current ISS position
-//Need some function to clear the array
-function initGlobe(dots, lat, lng) {
-
+function globe(){
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
     animateIn: true,
@@ -130,32 +113,36 @@ function initGlobe(dots, lat, lng) {
   .hexPolygonsData(countries.features)
   .hexPolygonResolution(3)
   .hexPolygonMargin(0.3)
-  
-  //.pointOfView({"lat": "56.95377", "lng": "24.099788","altitude": 2.5}, 1)
-  .pointsData(dots.Dots)
-  .pointAltitude(0.01)
-  .pointRadius(0.6)
-  .pointColor(0xff0000)
-  //console.log(Globe.getCoords(56.95377, 24.09979).x)
- // console.log(Globe.getCoords(56.95377, 24.09979).y)
-  //console.log(Globe.getCoords(56.95377, 24.09979).z)
 
-  //vajag jaunu veidu
-  const phi = (lat + 180) * Math.PI / 180; // Longitude (phi) corresponds to rotation around the y-axis
-  const theta = (lng - 90) * Math.PI / 180; // Latitude (theta) corresponds to rotation around the x-axis
-
-  Globe.rotateY(phi);
-  Globe.rotateZ(theta);
-
-
-  //Globe.rotateY(-Math.PI*(2/9));
-  //Globe.rotateZ(-Math.PI/6);
   const globeMaterial = Globe.globeMaterial();
   globeMaterial.color = new THREE.Color(0x0b1e6e);
   globeMaterial.emissive = new THREE.Color(0x07144a);
   globeMaterial.shininess = 0.7;
 
   scene.add(Globe);
+}
+
+function initGlobe(dots, lat, lng) {
+
+  Globe.pointsData(dots.Dots)
+  Globe.pointAltitude(0.01)
+  Globe.pointRadius(0.6)
+  Globe.pointColor(0xff0000)
+
+
+  //vajag jaunu veidu
+  //const phi = (lat + 180) * Math.PI / 180; // Longitude (phi) corresponds to rotation around the y-axis
+  //const theta = (lng - 90) * Math.PI / 180; // Latitude (theta) corresponds to rotation around the x-axis
+
+  //Globe.rotateY(phi);
+  //Globe.rotateZ(theta);
+
+
+  //Globe.rotateY(-Math.PI*(2/9));
+  //Globe.rotateZ(-Math.PI/6);
+  
+
+  
 
 }
 
@@ -173,12 +160,12 @@ function onWindowResize() {
 }
 
 function animate() {
-  camera.position.x +=
-    Math.abs(mouseX) <= windowHalfX/2
-      ?(mouseX/2 - camera.position.x)*0.05
-      :0;
-  camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
-  camera.lookAt(scene.position);
+  //camera.position.x +=
+  //  Math.abs(mouseX) <= windowHalfX/2
+  //    ?(mouseX/2 - camera.position.x)*0.05
+  //    :0;
+  //camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
+  //camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
