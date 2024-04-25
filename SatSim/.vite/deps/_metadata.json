@@ -1,0 +1,23 @@
+{
+  "hash": "8e352a95",
+  "browserHash": "eee5a6cc",
+  "optimized": {
+    "three-globe": {
+      "src": "../../node_modules/three-globe/dist/three-globe.mjs",
+      "file": "three-globe.js",
+      "fileHash": "1790033a",
+      "needsInterop": false
+    },
+    "three/addons/controls/OrbitControls.js": {
+      "src": "../../node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "file": "three_addons_controls_OrbitControls__js.js",
+      "fileHash": "0de960cd",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-M7VSCFL6": {
+      "file": "chunk-M7VSCFL6.js"
+    }
+  }
+}
