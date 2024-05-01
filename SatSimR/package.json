@@ -10,11 +10,10 @@
   },
   "devDependencies": {
     "vite": "^5.0.0",
-    "vite-plugin-glsl": "^1.2.1",
+    "vite-plugin-glsl": "^1.2.0",
     "vite-plugin-string": "^1.2.2"
   },
   "dependencies": {
-    "glsl": "^0.0.1",
     "three-globe": "^2.30.0"
   }
 }
