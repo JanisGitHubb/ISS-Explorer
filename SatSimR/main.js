@@ -31,7 +31,7 @@ function fetchData() {
   fetch('http://api.open-notify.org/iss-now.json')
     .then(response => response.json())
     .then(data => {
-      console.log('API Response:', data);
+      //console.log('API Response:', data);
       if (data.message === 'success' && data.iss_position) {
         let latitude = parseFloat(data.iss_position.latitude);
         let longitude = parseFloat(data.iss_position.longitude);
