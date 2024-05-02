@@ -24,7 +24,7 @@ let dots = {
 function updateJsonData(newLatitude, newLongitude) {
   dots.Dots.length = 0;
   dots.Dots.push({ "lat": newLatitude, "lng": newLongitude });
-  initGlobe(dots, newLatitude, newLongitude);
+  initGlobe(dots);
 }
 
 function fetchData() {
@@ -55,9 +55,17 @@ setInterval(fetchData, 1000);
 function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  //renderer.setSize(window.innerWidth, window.innerHeight);
+  // document.body.appendChild(renderer.domElement);
+  const container = document.getElementById('script-container'); 
+  //container.appendChild(renderer.domElement);
+  const width = container.clientWidth; // Use clientWidth to get the width without padding
+  const height = container.clientHeight; // Use clientHeight to get the height without padding
 
+  renderer.setSize(width, height);
+
+  // Append the renderer's canvas to the container
+  container.appendChild(renderer.domElement);
   scene = new THREE.Scene();
 
   var ambientLight = new THREE.AmbientLight(0xbbbbbb, 0.3)
@@ -65,7 +73,7 @@ function init(){
   scene.background = new THREE.Color(0x040d21);
 
   camera = new THREE.PerspectiveCamera();
-  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.aspect = width/height;
   camera.updateProjectionMatrix();
 
   var dLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -91,9 +99,9 @@ function init(){
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
   controls.minDistance = 200;
-  controls.maxDistance = 600;
+  controls.maxDistance = 300;
   controls.rotateSpeed = 0.8;
-  controls.zoomSpeed = 0.2;
+  controls.zoomSpeed = 0.8;
   controls.autoRotate = false;
 
   controls.minPolarAngle = Math.PI/3.5;
@@ -121,22 +129,13 @@ function globe(){
   scene.add(Globe);
 }
 
-function initGlobe(dots, lat, lng) {
+function initGlobe(dots) {
 
   Globe.pointsData(dots.Dots)
   Globe.pointAltitude(0.01)
   Globe.pointRadius(0.6)
   Globe.pointColor(0xff0000)
   
-  //vajag jaunu veidu
-  //const phi = (lat + 180) * Math.PI / 180; // Longitude (phi) corresponds to rotation around the y-axis
-  //const theta = (lng - 90) * Math.PI / 180; // Latitude (theta) corresponds to rotation around the x-axis
-
-  //Globe.rotateY(phi);
-  //Globe.rotateZ(theta);
-
-  //Globe.rotateY(-Math.PI*(2/9));
-  //Globe.rotateZ(-Math.PI/6);
   
 }
 
@@ -154,12 +153,6 @@ function onWindowResize() {
 }
 
 function animate() {
-  //camera.position.x +=
-  //  Math.abs(mouseX) <= windowHalfX/2
-  //    ?(mouseX/2 - camera.position.x)*0.05
-  //    :0;
-  //camera.position.y += (-mouseY/2 - camera.position.y)* 0.0005
-  //camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
