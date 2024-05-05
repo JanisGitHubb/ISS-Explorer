@@ -57,6 +57,15 @@ function init(){
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
+  
+  // const stl = renderer.domElement.style;
+  // stl.position = "absolute";
+  // stl.top = "0px";
+  // stl.left = "0px";
+  // stl.zIndex = "999";
+
+
+
 
   scene = new THREE.Scene();
 
