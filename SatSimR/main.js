@@ -5,6 +5,8 @@ import countries from './custom.geo.json'
 
 var renderer, camera, scene, controls;
 
+let mouseX = 0;
+let mouseY = 0;
 let windowHalfX = window.innerWidth/2;
 let windowHalfY = window.innerHeight/2;
 var Globe;
@@ -33,7 +35,7 @@ function fetchData() {
         let latitude = parseFloat(data.iss_position.latitude);
         let longitude = parseFloat(data.iss_position.longitude);
         //console.log('Latitude:', latitude);
-        //console.log('Longitude:', longitude);
+        console.log('Longitude:', longitude);
         updateJsonData(latitude, longitude);
       } else {
         console.error('Invalid API response:', data);
@@ -63,7 +65,7 @@ function init(){
   scene.background = new THREE.Color(0x040d21);
 
   camera = new THREE.PerspectiveCamera();
-  camera.aspect = width/height;
+  //camera.aspect = width/height;
   camera.updateProjectionMatrix();
 
   var dLight = new THREE.DirectionalLight(0xffffff, 0.8);
