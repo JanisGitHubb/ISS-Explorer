@@ -18,5 +18,5 @@ Lai palaistu vietni ir jābūt datoram, kurā ir ieinstalēta Java Script progra
 ### Vairāk info
 Mājaslapa ir veidota līdzīga jau ikdienā lietotajām, tāpēc ir intuitīva un pašsaprotama. Zemeslodes oriģinālais stāvoklis ir ar skatu punktu uz koordinātu sākumpunktu jeb ekvatora un nulles meridiānas krustpunktu. Lai pagrieztu zemeslodi ir jātur nospiesta peles kreisā poga un jāvelk, lai veiktu vēlamo rotāciju un lai pietuvinātu vai attālinātu ir jāgriež peles rats attiecīgi uz priekšu vai atpakaļ. Kosmosa stacijas atrašanās vietu apzīmē sarkans, pulsējošs punkts.
 
-#### Autori
+### Autori
 Vietni izveidoja divi RTU inženierzinātņu vidusskolas 11. klases skolnieki: **Gustavs Bremmers** un **Jānis Stendzenieks**.
