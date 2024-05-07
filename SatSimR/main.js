@@ -63,6 +63,7 @@ function init(){
   var ambientLight = new THREE.AmbientLight(0xbbbbbb, 0.3)
   scene.add(ambientLight)
   scene.background = new THREE.Color(0x040d21);
+  //0x15222b
 
   camera = new THREE.PerspectiveCamera();
   //camera.aspect = width/height;
