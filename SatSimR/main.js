@@ -16,7 +16,6 @@ onWindowResize();
 animate();
 globe();
 
-
 let dots = {
   "Dots": []
 };
@@ -35,7 +34,7 @@ function fetchData() {
       if (data.message === 'success' && data.iss_position) {
         let latitude = parseFloat(data.iss_position.latitude);
         let longitude = parseFloat(data.iss_position.longitude);
-        console.log('Latitude:', latitude);
+        //console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
         updateJsonData(latitude, longitude);
       } else {
@@ -47,23 +46,15 @@ function fetchData() {
     });
   }
 
-
 setInterval(fetchData, 1000);
-
-
 
 function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  // document.body.appendChild(renderer.domElement);
+  // document.body.appendChild(renderer.domElement); <- adds to the end of the HTML body
+
   const container = document.getElementById('script-container'); 
-  //container.appendChild(renderer.domElement);
-  const width = container.clientWidth; // Use clientWidth to get the width without padding
-  const height = container.clientHeight; // Use clientHeight to get the height without padding
-
-  //renderer.setSize(width, height);
-
   // Append the renderer's canvas to the container
   container.appendChild(renderer.domElement);
 
@@ -74,7 +65,7 @@ function init(){
   scene.background = new THREE.Color(0x040d21);
 
   camera = new THREE.PerspectiveCamera();
-  camera.aspect = width/height;
+  //camera.aspect = width/height;
   camera.updateProjectionMatrix();
 
   var dLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -131,13 +122,10 @@ function globe(){
 }
 
 function initGlobe(dots) {
-
   Globe.pointsData(dots.Dots)
   Globe.pointAltitude(0.01)
   Globe.pointRadius(0.6)
   Globe.pointColor(0xff0000)
-  
-  
 }
 
 function onMouseMove(event) {
