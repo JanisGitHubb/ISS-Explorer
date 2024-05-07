@@ -56,7 +56,16 @@ function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  // document.body.appendChild(renderer.domElement);
+  const container = document.getElementById('script-container'); 
+  //container.appendChild(renderer.domElement);
+  const width = container.clientWidth; // Use clientWidth to get the width without padding
+  const height = container.clientHeight; // Use clientHeight to get the height without padding
+
+  //renderer.setSize(width, height);
+
+  // Append the renderer's canvas to the container
+  container.appendChild(renderer.domElement);
 
   scene = new THREE.Scene();
 
