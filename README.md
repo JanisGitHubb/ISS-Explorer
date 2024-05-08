@@ -12,7 +12,7 @@ Pašlaik attiecīgais projekts ir pilnīgs un izmantojams iecerētajam mērķim,
 ### Darbības princips
 Visa mājas lapa ir izveidota, izmantojot HTML, CSS un Java Script. Simulācija tiek īstenota, izmantojot Three JS Three Globe bibliotēku un API vaicājumus, proti, uzsākot programmu tiek renderēta vide un zemeslode uz kuras izvietoti pielāgoti geo json dati, tad katru sekundi tiek vaicāta API informācija par stacijas atrašanās vietu, to apstrādā un izgūst skaitlisku vērtību, ko tālāk izmanto, lai uz attiecīgās zemeslodes izvietotu punktu.
 
-### Palaišana
+### Palaišana test
 Lai palaistu vietni ir jābūt datoram, kurā ir ieinstalēta JavaScript programmēšanas valoda, kā arī Node.js *(versija v21.2.0)* ar npm *(versija 10.2.3)* un Vite *(versija 5.0.0)*. Terminālī jeb komandu logā ir jāatver **SatSimR** mape, kas atrodas **SatSim** mapē. To, atrodoties SatSim mapē, var izdarīt ar komandu 'cd SatSimR' , tad ir jādod komanda 'npm install' ar kuras palīdzību tiks iegūts viss vajadzīgais. Lai aktivizētu mājaslapu, to izvietojot uz lokāla servera, ir jādod komanda 'npm run dev'.
 
 ### Vairāk info
