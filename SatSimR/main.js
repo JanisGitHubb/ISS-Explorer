@@ -34,7 +34,7 @@ function fetchData() {
       if (data.message === 'success' && data.iss_position) {
         let latitude = parseFloat(data.iss_position.latitude);
         let longitude = parseFloat(data.iss_position.longitude);
-        //console.log('Latitude:', latitude);
+        console.log('Latitude:', latitude);
         console.log('Longitude:', longitude);
         updateJsonData(latitude, longitude);
       } else {
