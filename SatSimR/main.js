@@ -62,8 +62,8 @@ function init(){
 
   var ambientLight = new THREE.AmbientLight(0xbbbbbb, 0.3)
   scene.add(ambientLight)
-  scene.background = new THREE.Color(0x040d21);
-  //0x15222b
+  scene.background = new THREE.Color(0x15222b);
+  //0x15222b EEEEEE 040d21
 
   camera = new THREE.PerspectiveCamera();
   //camera.aspect = width/height;
@@ -73,11 +73,11 @@ function init(){
   dLight.position.set(-800, 2000, 400);
   camera.add(dLight);
 
-  var dLight1 = new THREE.DirectionalLight(0x7982f6, 1);
+  var dLight1 = new THREE.DirectionalLight(0xc7caf2, 1); //7982f6
   dLight1.position.set(-200, 500, 200);
   camera.add(dLight1);
 
-  var dLight2 = new THREE.PointLight(0x8566cc, 0.5);
+  var dLight2 = new THREE.PointLight(0x948ea3, 0.5); //8566cc
   dLight2.position.set(-200, 500, 200);
   camera.add(dLight2);
 
@@ -113,11 +113,14 @@ function globe(){
   .hexPolygonsData(countries.features)
   .hexPolygonResolution(3)
   .hexPolygonMargin(0.3)
+  .hexPolygonColor(0x15222b)
 
   const globeMaterial = Globe.globeMaterial();
-  globeMaterial.color = new THREE.Color(0x0b1e6e);
-  globeMaterial.emissive = new THREE.Color(0x07144a);
-  globeMaterial.shininess = 0.7;
+  globeMaterial.color = new THREE.Color(0x15222b);
+  //0x15222b 0x0b1e6e
+  globeMaterial.emissive = new THREE.Color(0x0f181f);
+  //0x07144a
+  globeMaterial.shininess = 0.2;
 
   scene.add(Globe);
 }
