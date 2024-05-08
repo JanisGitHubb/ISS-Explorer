@@ -66,7 +66,6 @@ function init(){
   //0x15222b EEEEEE 040d21
 
   camera = new THREE.PerspectiveCamera();
-  //camera.aspect = width/height;
   camera.updateProjectionMatrix();
 
   var dLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -92,7 +91,7 @@ function init(){
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
   controls.minDistance = 200;
-  controls.maxDistance = 300;
+  controls.maxDistance = 350;
   controls.rotateSpeed = 0.8;
   controls.zoomSpeed = 0.8;
   controls.autoRotate = false;
